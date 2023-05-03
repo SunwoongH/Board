@@ -26,10 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PostsApiControllerTest {
     @LocalServerPort
     int port;
-
     @Autowired
     TestRestTemplate restTemplate;
-
     @Autowired
     PostsRepository postsRepository;
 
@@ -40,7 +38,7 @@ class PostsApiControllerTest {
 
     @DisplayName("게시글이 정상적으로 등록된다.")
     @Test
-    void postsRegisterTest() {
+    void postsSaveTest() {
         // given
         String title = "안녕";
         String content = "하이";
