@@ -9,10 +9,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest
+@WebMvcTest(DummyController.class)
 class DummyControllerTest {
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @DisplayName("/dummy/string GET 요청 시 문자열을 반환한다.")
     @Test
