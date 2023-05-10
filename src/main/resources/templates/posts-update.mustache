@@ -1,0 +1,39 @@
+{{>layout/header}}
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>게시글 수정</h1>
+    </div>
+
+    <div>
+        <form>
+            <div class="form-group">
+                <label for="id">게시글 번호</label>
+                <input type="text" class="form-control" id="id" value="{{posts.id}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="title" value="{{posts.title}}">
+            </div>
+            <div class="form-group">
+                <label for="author">작성자</label>
+                <input type="text" class="form-control" id="author" value="{{posts.author}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="content">내용</label>
+                <textarea class="form-control" id="content">{{posts.content}}</textarea>
+            </div>
+        </form>
+
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col">
+                <a href="/" role="button" class="w-100 btn btn-secondary btn-lg">취소</a>
+            </div>
+            <div class="col">
+                <button type="button" class="w-100 btn btn-primary btn-lg" id="btn-update">수정</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{>layout/footer}}
