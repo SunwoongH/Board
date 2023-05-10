@@ -5,10 +5,14 @@ import org.joy.domain.posts.Posts;
 import org.joy.domain.posts.PostsRepository;
 import org.joy.web.dto.request.PostsSaveRequestDto;
 import org.joy.web.dto.request.PostsUpdateRequestDto;
+import org.joy.web.dto.response.PostsInfoResponseDto;
 import org.joy.web.dto.response.PostsResponseDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @Service
@@ -33,5 +37,13 @@ public class PostsService {
         Posts findPosts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("id = " + id + " 게시글이 존재하지 않습니다."));
         return new PostsResponseDto(findPosts);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsInfoResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc()
+                .stream()
+                .map(PostsInfoResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
