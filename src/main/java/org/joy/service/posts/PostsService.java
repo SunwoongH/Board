@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @RequiredArgsConstructor
 @Service
 public class PostsService {
@@ -45,5 +44,12 @@ public class PostsService {
                 .stream()
                 .map(PostsInfoResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Posts findPosts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("id = " + id + " 게시글이 존재하지 않습니다."));
+        postsRepository.delete(findPosts);
     }
 }
