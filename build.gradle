@@ -33,7 +33,7 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
-jar {
+tasks.named("jar") {
     enabled = false
 }
 
